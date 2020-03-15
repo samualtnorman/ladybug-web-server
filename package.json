@@ -1,0 +1,42 @@
+{
+  "name": "ladybug-web-server",
+  "version": "0.0.0",
+  "description": "Web server for project ladybug",
+  "main": "index.js",
+  "files": [
+    "index.js",
+    "lib/*"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "start": "npx forever -w index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/samualtnorman/ladybug-web-server.git"
+  },
+  "keywords": [
+    "ladybug",
+    "web",
+    "server",
+    "webserver"
+  ],
+  "author": "Samual Norman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/samualtnorman/ladybug-web-server/issues"
+  },
+  "homepage": "https://github.com/samualtnorman/ladybug-web-server#readme",
+  "dependencies": {
+    "mime-types": "^2.1.26",
+    "ws": "^7.2.3"
+  },
+  "devDependencies": {
+    "@types/mime-types": "^2.1.0",
+    "@types/node": "^13.9.1",
+    "@types/ws": "^7.2.2",
+    "forever": "^2.0.0",
+    "typescript": "^3.8.3"
+  }
+}

@@ -102,3 +102,7 @@ dist
 
 # TernJS port file
 .tern-port
+
+# built TypeScript files
+index.js
+lib/*
