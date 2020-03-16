@@ -34,8 +34,10 @@ httpServer.on(
 	)
 )
 
-wsServer.on("connection", ws => {
-	// ...
+wsServer.on("connection", (ws: WSServer) => {
+	ws.on("message", (msg: string) => {
+		console.log(msg)
+	})
 })
 
 httpServer.listen(80)

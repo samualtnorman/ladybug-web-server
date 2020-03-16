@@ -10,7 +10,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
-    "start": "npx forever -w index.js"
+    "start": "npx forever -w index.js",
+    "watch": "npx tsc --watch"
   },
   "repository": {
     "type": "git",
