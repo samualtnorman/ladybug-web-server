@@ -2,16 +2,18 @@
   "name": "ladybug-web-server",
   "version": "0.0.0",
   "description": "Web server for project ladybug",
-  "main": "index.js",
+  "main": "main.js",
   "files": [
-    "index.js",
-    "lib/*"
+    "main.js",
+    "lib/*",
+    "electron/*"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "npx tsc",
-    "start": "npx forever -w index.js",
-    "watch": "npx tsc --watch"
+    "start-old": "npx forever -w index.js",
+    "watch": "npx tsc --watch",
+    "start": "npx electron ."
   },
   "repository": {
     "type": "git",
@@ -37,6 +39,7 @@
     "@types/mime-types": "^2.1.0",
     "@types/node": "^13.9.1",
     "@types/ws": "^7.2.2",
+    "electron": "^8.1.1",
     "forever": "^2.0.0",
     "typescript": "^3.8.3"
   }

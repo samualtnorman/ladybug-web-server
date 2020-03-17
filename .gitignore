@@ -104,5 +104,7 @@ dist
 .tern-port
 
 # built TypeScript files
-index.js
-lib/*
+*.js
+
+# VS Code config files
+.vscode/
