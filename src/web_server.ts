@@ -9,8 +9,6 @@ import { parse } from "url"
 let clients: { [key: string]: string[] } = {}
 
 ipcMain.on("tick", (event, msg) => {
-	console.log(clients)
-
 	let o: string[] = []
 
 	for (let [ client, requests ] of Object.entries(clients))
@@ -38,12 +36,12 @@ const httpServer = new HTTPServer((req, res) => {
 			switch (reason.errno) {
 				case -2:
 				case -21:
-					console.log(`404: ${dir}`)
+					console.error(`404: ${dir}`)
 					res.writeHead(404, { "Content-Type": "text/plain" })
 					res.end("404 not found")
 					break;
 				default:
-					console.log("500: unhandled error:", reason)
+					console.error("500: unhandled error:", reason)
 					res.writeHead(500, { "Content-Type": "text/plain" })
 					res.end("500 internal server error")
 			}
@@ -66,7 +64,6 @@ wsServer.on("connection", (ws: WSServer) => {
 	clients[client] = []
 
 	return ws.on("message", (msg: string) => {
-		console.log(`ws: ${msg}`)
 		clients[client].push(...JSON.parse(msg))
 	})
 })
