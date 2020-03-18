@@ -9,8 +9,6 @@ import { parse } from "url"
 let clients: { [key: string]: string[] } = {}
 
 ipcMain.on("tick", (event, msg) => {
-	console.log(msg)
-
 	let o: string[] = []
 
 	for (let [ client, requests ] of Object.entries(clients))
