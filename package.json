@@ -2,17 +2,13 @@
   "name": "ladybug-web-server",
   "version": "0.0.0",
   "description": "Web server for project ladybug",
-  "main": "main.js",
-  "files": [
-    "main.js",
-    "lib/*",
-    "electron/*"
-  ],
+  "main": ".webpack/main",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npx tsc",
-    "watch": "npx tsc --watch",
-    "start": "npx electron ."
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint --ext .ts ."
   },
   "repository": {
     "type": "git",
@@ -24,21 +20,85 @@
     "server",
     "webserver"
   ],
-  "author": "Samual Norman",
+  "author": {
+    "name": "Samual Norman",
+    "email": "samualtnorman@gmail.com"
+  },
   "license": "MIT",
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "ladybug_web_server"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ],
+      "plugins": [
+        [
+          "@electron-forge/plugin-webpack",
+          {
+            "mainConfig": "./webpack.main.config.js",
+            "renderer": {
+              "config": "./webpack.renderer.config.js",
+              "entryPoints": [
+                {
+                  "html": "./src/index.html",
+                  "js": "./src/renderer.ts",
+                  "name": "main_window"
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    }
+  },
   "bugs": {
     "url": "https://github.com/samualtnorman/ladybug-web-server/issues"
   },
   "homepage": "https://github.com/samualtnorman/ladybug-web-server#readme",
   "dependencies": {
+    "electron-squirrel-startup": "^1.0.0",
     "mime-types": "^2.1.26",
     "ws": "^7.2.3"
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.50",
+    "@electron-forge/maker-deb": "^6.0.0-beta.50",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.50",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.50",
+    "@electron-forge/maker-zip": "^6.0.0-beta.50",
+    "@electron-forge/plugin-webpack": "^6.0.0-beta.50",
+    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
     "@types/mime-types": "^2.1.0",
-    "@types/node": "^13.9.1",
-    "@types/ws": "^7.2.2",
-    "electron": "^8.1.1",
+    "@types/ws": "^7.2.3",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
+    "css-loader": "^3.4.2",
+    "electron": "8.1.1",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.1",
+    "fork-ts-checker-webpack-plugin": "^3.1.1",
+    "node-loader": "^0.6.0",
+    "style-loader": "^0.23.1",
+    "ts-loader": "^6.2.1",
     "typescript": "^3.8.3"
   }
 }

@@ -1,3 +1,5 @@
+import './index.css';
+
 import { ipcRenderer } from "electron"
 
 let tickSpeed = 500

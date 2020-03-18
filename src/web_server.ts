@@ -1,4 +1,4 @@
-import { app, BrowserWindow, ipcMain } from "electron"
+import { ipcMain } from "electron"
 import { Server as HTTPServer } from "http"
 import { Server as WSServer } from "ws"
 import { resolve } from "path"
@@ -17,19 +17,6 @@ ipcMain.on("tick", (event, msg) => {
 		o.push(`${client} ${requests.shift()}`)
 	
 	event.reply("tick", o)
-})
-
-app.whenReady().then(() => {
-	let win = new BrowserWindow({
-		width: 800,
-		height: 600,
-		webPreferences: {
-			nodeIntegration: true
-		},
-		autoHideMenuBar: true
-	})
-
-	win.loadFile("index.html")
 })
 
 logTimeLoop()
@@ -84,7 +71,7 @@ wsServer.on("connection", (ws: WSServer) => {
 	})
 })
 
-httpServer.listen(80)
+httpServer.listen(8080)
 
 function logTimeLoop() {
 	console.log("time:", new Date)
