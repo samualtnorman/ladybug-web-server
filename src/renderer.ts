@@ -6,8 +6,8 @@ let tickSpeed = 500
 
 tickLoop()
 
-ipcRenderer.on("tick", (event, msg) => {
-	console.log(msg)
+ipcRenderer.on("tick", (event, msg: string[]) => {
+	msg.length && console.log(msg)
 })
 
 function tickLoop() {
