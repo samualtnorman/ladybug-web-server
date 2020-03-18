@@ -1,7 +1,0 @@
-src/*
-node_modules
-package.json
-tsconfig.json
-README.md
-LICENCE
-root/*
