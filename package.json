@@ -38,7 +38,7 @@
     "@types/mime-types": "^2.1.0",
     "@types/node": "^13.9.1",
     "@types/ws": "^7.2.2",
-    "electron": "^8.1.1",
+    "electron": "^8.2.4",
     "typescript": "^3.8.3"
   }
 }
